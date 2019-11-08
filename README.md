@@ -44,7 +44,7 @@ You should have a Paid account to perform this deployment
 The following figure illustrates the deployment architecture for the 'AWX on IBM Cloud VPC' (the text in `orange` color is used to represent the resource names that are used in the code).
 
 ---
-![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/tree/master/diagrams/TerraformAWX.png)
+![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/TerraformAWX.png)
 ---
 
 
@@ -111,12 +111,12 @@ https://github.com/ansible/awx/blob/devel/INSTALL.md
 
 ## AWX Console
 ---
-![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/tree/master/diagrams/AWX_Login_Page.png)
+![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Login_Page.png)
 ---
  
 ## AWX Dashboard
 ---
-![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/tree/master/diagrams/AWX_Dashboard.png)
+![reference solution](/https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Dashboard.png)
 
 ---
 
