@@ -7,6 +7,7 @@ sudo yum -y install -y wget git gettext ansible docker nodejs npm gcc-c++ bzip2 
 
 sudo yum -y install python34-setuptools
 alias python=/usr/local/bin/python2.7
+pip install --upgrade pip
 pip install docker
 pip install docker-compose
 
