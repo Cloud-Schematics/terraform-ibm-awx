@@ -15,7 +15,6 @@ module vpc_pub_priv {
   subnet_zone = "${var.subnet_zone}"
   ssh_keyname = "${var.ssh_keyname}"
   ssh_keyname = "${ibm_is_ssh_key.public_sshkey.id}"
-  ssh_yes_or_no = "${var.ssh_yes_or_no}"
 }
 
 # Resource to execute awx_install.sh script on VSI
