@@ -33,11 +33,3 @@ variable "ssh_keyname" {
 	description = "SSH Keyname to allow access to VSI to install AWX"
   	default = "ssh-key-name"
 }
-
-variable "ssh_public_key" {
-	description = "SSH Public key to allow automation to access to VSI to install AWX"
-}
-
-variable "ssh_private_key" {
-	description = "SSH Private key to allow automation to access to VSI to install AWX"
-}
