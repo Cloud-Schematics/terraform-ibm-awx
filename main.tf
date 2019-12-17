@@ -63,7 +63,7 @@ resource "null_resource" "create_ssh_keys" {
 
 output "resource_cloud" {
    value = {
-            "resource_controller_url" = "Access AWX via browser http://${module.vpc_pub_priv.floating_ip_address}"
+            "resource_controller_url" = "http://${module.vpc_pub_priv.floating_ip_address}"
              "resource_name" = "AWX"
   }
 }
