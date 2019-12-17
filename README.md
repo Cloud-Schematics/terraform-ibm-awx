@@ -93,6 +93,13 @@ You can also choose to customize the default settings for your VPC infrastructur
 | vpc_name | VPC Name | terraform-vpc-awx
 | basename | Prefix used for all resource names | terraform-vpc-basename
 
+## Output
+
+
+  Name               | Description                          
+| -------------------| ------------------------------------
+| AWX web server address |  The default URL is http://floatingIP 
+
 ### Where to find the floatingIP
 On a Standalone machine using Terraform Command Line Interface (CLI):
 The floating IP (or public host) information will be available in "Outputs:" section of the ```terraform apply``` output log.
