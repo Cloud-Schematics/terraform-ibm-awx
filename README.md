@@ -113,12 +113,12 @@ https://github.com/ansible/awx/blob/devel/INSTALL.md
 
 ## AWX Console
 ---
-![reference solution](https://github.ibm.com/epradeepk/Terraform-AWX-Generation2/blob/master/diagrams/AWX_Login_Page.png)
+![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Login_Page.png)
 ---
  
 ## AWX Dashboard
 ---
-![reference solution](https://github.ibm.com/epradeepk/Terraform-AWX-Generation2/blob/master/diagrams/AWX_Dashboard.png)
+![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Dashboard.png)
 
 ---
 
