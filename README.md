@@ -76,18 +76,12 @@ To apply the terraform-ibm-awx template in IBM Cloud with IBM Cloud Schematics, 
 
 
 ##  Configuring your deployment values
-When you select this terraform-ibm-awx template from the IBM Cloud catalog, you must enter the following values before you can apply the template:
-  * `ssh_public_key` and `ssh_private_key:` Enter a public and private SSH key that you use to access your VPC classic infrastructure virtual server instance. For more information about adding an SSH key and uploading the key to IBM Cloud, see [Adding an SSH key](https://cloud.ibm.com/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key).
-
-To apply on a standalone machine using Terraform CLI, you must enter the following values before you can apply the template:
+To apply on a standalone machine using Terraform CLI, you must enter the following values before you can perform `terraform plan` and `terraform apply`:
   * `ibmcloud_api_key:` Enter the API key to access IBM Cloud VPC classic infrastructure using command
     ```export IC_API_KEY=<API-KEY-VALUE>``` on command line interface terminal.
     For more information for how to create an API key and retrieve it, see [Managing classic infrastructure API keys](https://cloud.ibm.com/docs/iam?topic=iam-classic_keys). 
-   * `ssh_public_key and ssh_private_key:` Enter a public and private SSH key that you use to access your VPC classic infrastructure virtual server instance. For more information about adding an SSH key and uploading the key to IBM Cloud, see [Adding an SSH key](https://cloud.ibm.com/docs/infrastructure/ssh-keys?topic=ssh-keys-adding-an-ssh-key).
-
 
 You can also choose to customize the default settings for your VPC infrastructure virtual server instance:
-
 
 
   Name               | Description                         | Default Value |
@@ -98,7 +92,6 @@ You can also choose to customize the default settings for your VPC infrastructur
 | resource group name | To organize your account resources in customizable groupings | default
 | vpc_name | VPC Name | terraform-vpc-awx
 | basename | Prefix used for all resource names | terraform-vpc-basename
-
 
 ### Where to find the floatingIP
 On a Standalone machine using Terraform Command Line Interface (CLI):
