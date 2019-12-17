@@ -3,10 +3,14 @@
 # Install packages required to setup AWX
 sudo yum -y install epel-release
 sudo yum -y update all
-sudo yum -y install -y wget git gettext ansible docker nodejs npm gcc-c++ bzip2 vim
+sudo yum -y install -y wget git gettext ansible docker nodejs npm gcc-c++ bzip2 vim python-devel python2-devel pytest
 
-sudo yum -y install python34-setuptools
-alias python=/usr/local/bin/python2.7
+
+sudo yum -y install python-setuptools
+sudo yum -y install python-pip
+pip install --upgrade pip
+pip install --upgrade setuptools
+#alias python=/usr/local/bin/python2.7
 pip install docker
 pip install docker-compose
 
