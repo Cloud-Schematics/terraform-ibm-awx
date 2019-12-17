@@ -98,25 +98,27 @@ You can also choose to customize the default settings for your VPC infrastructur
 | resource group name | To organize your account resources in customizable groupings | default
 | vpc_name | VPC Name | terraform-vpc-awx
 | basename | Prefix used for all resource names | terraform-vpc-basename
-| ssh_keyname | SSH Keyname to allow access to VSI to install AWX | ssh-key-name
 
 
-## Output
+### Where to find the floatingIP
+On a Standalone machine using Terraform Command Line Interface (CLI):
+The floating IP (or public host) information will be available in "Outputs:" section of the ```terraform apply``` output log.
 
-The AWX web server is accessible on the deployment host. The default URL is http://floatingIP.
-The floating IP (or public host) information will be available in output log of the command ```terraform apply```.
+Using IBM Cloud Schematics:
+The floating IP (or public host) information will be available in "View Log" (under "Outputs:") of "Plan applied" activity.
 
-You will prompted with a login dialog. The default administrator username and the password information is available in AWX documentation.
+### Accessing AWX Server
+Upon clicking http://floatingIP you will be prompted with a login dialog. The default administrator username and the password information is available in AWX documentation.
 https://github.com/ansible/awx/blob/devel/INSTALL.md
 
 ## AWX Console
 ---
-![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Login_Page.png)
+![reference solution](https://github.ibm.com/epradeepk/Terraform-AWX-Generation2/blob/master/diagrams/AWX_Login_Page.png)
 ---
  
 ## AWX Dashboard
 ---
-![reference solution](https://github.com/Cloud-Schematics/terraform-ibm-awx/blob/master/diagrams/AWX_Dashboard.png)
+![reference solution](https://github.ibm.com/epradeepk/Terraform-AWX-Generation2/blob/master/diagrams/AWX_Dashboard.png)
 
 ---
 
@@ -133,7 +135,11 @@ Select option Actions in the created workspace and choose Destroy Resources/Dest
 
 ## References
 
-https://github.com/ansible/awx/blob/devel/INSTALL.md#docker-compose
+https://www.ibm.com/cloud/garage/tutorials/public-cloud-infrastructure
+
+https://github.com/ibm-cloud-architecture/refarch-vsi-on-vpc
+
+https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-strategies-for-resilient-applications
 
 https://github.com/ansible/awx/blob/devel/INSTALL.md
 
@@ -142,4 +148,3 @@ https://github.com/Crazy450/terraform-aws-awx
 https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-about&locale=en
 
 https://github.com/IBM-Cloud/vpc-tutorials
-
