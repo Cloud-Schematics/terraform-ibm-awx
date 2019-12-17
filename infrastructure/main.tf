@@ -26,30 +26,26 @@ resource "ibm_is_vpc" "awxvpc" {
   resource_group = "${data.ibm_resource_group.group.id}"
 }
 
-resource "ibm_is_ssh_key" "sshkey" {
-    name = "${var.ssh_keyname}"
-    public_key = "${var.ssh_public_key}"
-}
-
-
 resource ibm_is_security_group "awxsg" {
   name = "${var.basename}-awxsg"
   vpc  = "${ibm_is_vpc.awxvpc.id}"
 }
 
-
 data ibm_is_image "image1" {
-  #name = "ubuntu-18.04-amd64"
-  name = "centos-7.x-amd64"
+  # For Generation 2
+  #name = "ibm-centos-7-0-64"
+  name = "ibm-centos-7-6-minimal-amd64-1"
 }
 
 resource ibm_is_instance "awxvsi" {
   name           = "${var.basename}-awxvsi"
   vpc            = "${ibm_is_vpc.awxvpc.id}"
   zone           = "${var.subnet_zone}"
-  keys           = ["${ibm_is_ssh_key.sshkey.id}"]
+  #keys           = ["${ibm_is_ssh_key.sshkey.id}"]
+  keys           = ["${var.ssh_keyname}"]
   image          = "${data.ibm_is_image.image1.id}"
-  profile        = "cc1-2x4"
+  # profile = "bx2-4x16"
+  profile = "bx2-8x32"
   resource_group = "${data.ibm_resource_group.group.id}"
 
   primary_network_interface = {
@@ -61,10 +57,6 @@ resource ibm_is_instance "awxvsi" {
 resource ibm_is_floating_ip "awxfip" {
   name   = "${var.basename}-awxfip"
   target = "${ibm_is_instance.awxvsi.primary_network_interface.0.id}"
-}
-
-output sshcommand {
-  value = "ssh root@${ibm_is_floating_ip.awxfip.address}"
 }
 
 # Enable Ingress/Inbound ssh on port 22
