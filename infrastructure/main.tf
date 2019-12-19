@@ -33,8 +33,7 @@ resource ibm_is_security_group "awxsg" {
 
 data ibm_is_image "image1" {
   # For Generation 2
-  #name = "ibm-centos-7-0-64"
-  name = "ibm-centos-7-6-minimal-amd64-1"
+  name = "${var.image}"
 }
 
 resource ibm_is_instance "awxvsi" {
@@ -44,8 +43,7 @@ resource ibm_is_instance "awxvsi" {
   #keys           = ["${ibm_is_ssh_key.sshkey.id}"]
   keys           = ["${var.ssh_keyname}"]
   image          = "${data.ibm_is_image.image1.id}"
-  # profile = "bx2-4x16"
-  profile = "bx2-8x32"
+  profile        = "${var.profile}"
   resource_group = "${data.ibm_resource_group.group.id}"
 
   primary_network_interface = {
