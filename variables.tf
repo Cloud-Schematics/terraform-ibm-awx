@@ -1,6 +1,6 @@
 
 variable "profile" {
-  	description = "Virtual Server Instance Profile"
+  	description = "Virtual Server Instance Profile (default: Generation 2)"
   	default = "cc1-2x4"
 }
 
@@ -20,13 +20,13 @@ variable "basename" {
 }
 
 variable "subnet_zone" {
-	description = "Prefix used for all resource names"
- 	default = "eu-de-1"
+	description = "Prefix used for all resource names (default: Generation 2)"
+ 	default = "us-south-1"
 }
 
 variable "region" {
-	description = "Region to deploy VPC"
- 	default = "eu-de"
+	description = "Region to deploy VPC (default: Generation 2)"
+ 	default = "us-south"
 }
 
 variable "ssh_keyname" {
@@ -35,11 +35,11 @@ variable "ssh_keyname" {
 }
 
 variable "gen" {
-	description = "Generation"
+	description = "Generation (default: Generation 2)"
   	default = 2
 }
 
 variable "image" {
-	description = "VSI Image"
+	description = "VSI Image (default: Generation 2)"
   	default = "ibm-centos-7-6-minimal-amd64-1"
 }
