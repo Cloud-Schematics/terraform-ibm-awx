@@ -84,14 +84,16 @@ To apply on a standalone machine using Terraform CLI, you must enter the followi
 You can also choose to customize the default settings for your VPC infrastructure virtual server instance:
 
 
-  Name               | Description                         | Default Value |
-| -------------------| ------------------------------------|----------------
-| region | Region to deploy VPC | eu-de
-| subnet zone        | Zone name where AWX will be deployed| eu-de-1
-| profile | Virtual Server Instance Profile | cc1-2x4
-| resource group name | To organize your account resources in customizable groupings | default
-| vpc_name | VPC Name | terraform-vpc-awx
-| basename | Prefix used for all resource names | terraform-vpc-basename
+  Name               | Description                         | Default Value - Generation 1 | Default Value - Generation 2
+| -------------------| ------------------------------------|------------------------------|------------------------------
+| region | Region to deploy VPC | eu-de | us-south
+| subnet zone        | Zone name where AWX will be deployed| eu-de-1 | us-south1
+| profile | VSI Profile | cc1-2x4 | bx2-4x16
+| image | VSI image | centos-7.x-amd64 | ibm-centos-7-6-minimal-amd64-1 
+| resource group name | To organize your account resources in customizable groupings | default | default
+| vpc_name | VPC Name | terraform-vpc-awx | terraform-vpc-awx
+| basename | Prefix used for all resource names | terraform-vpc-basename | terraform-vpc-basename
+
 
 ## Output
 
