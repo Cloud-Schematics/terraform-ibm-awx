@@ -1,7 +1,7 @@
 # This file is used to install AWX and it's prerequisites on VSI
 
 provider "ibm" {
-  generation   = 2
+  generation   = "${var.gen}"
   region = "${var.region}"
 }
 
@@ -15,6 +15,8 @@ module vpc_pub_priv {
   subnet_zone = "${var.subnet_zone}"
   ssh_keyname = "${var.ssh_keyname}"
   ssh_keyname = "${ibm_is_ssh_key.public_sshkey.id}"
+  image       = "${var.image}"
+  profile     = "${var.profile}"
 }
 
 # Resource to execute awx_install.sh script on VSI
@@ -62,6 +64,7 @@ resource "null_resource" "create_ssh_keys" {
 
 output "resource_cloud" {
    value = {
+            "is_resource" = "true"
             "resource_controller_url" = "http://${module.vpc_pub_priv.floating_ip_address}"
              "resource_name" = "AWX"
   }
