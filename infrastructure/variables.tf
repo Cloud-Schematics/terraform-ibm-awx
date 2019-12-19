@@ -4,5 +4,7 @@ variable "vpc_name" {}
 variable "basename" {}
 variable "subnet_zone" {}
 variable "ssh_keyname" {}
+variable "image" {}
+variable "profile" {}
 
 
