@@ -107,7 +107,9 @@ On a Standalone machine using Terraform Command Line Interface (CLI):
 The floating IP (or public host) information will be available in "Outputs:" section of the ```terraform apply``` output log.
 
 Using IBM Cloud Schematics:
-The floating IP (or public host) information will be available in "View Log" (under "Outputs:") of "Plan applied" activity.
+The AWX web link is available 
+- under workspace "Resources" in AWX section and 
+- at "View Log" (under "Outputs:") of "Plan applied" activity.
 
 ### Accessing AWX Server
 Upon clicking http://floatingIP you will be prompted with a login dialog. The default administrator username and the password information is available in AWX documentation.
