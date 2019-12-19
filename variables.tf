@@ -33,3 +33,13 @@ variable "ssh_keyname" {
 	description = "SSH Keyname to allow access to VSI to install AWX"
   	default = "ssh-key-name"
 }
+
+variable "gen" {
+	description = "Generation"
+  	default = 2
+}
+
+variable "image" {
+	description = "VSI Image"
+  	default = "ibm-centos-7-6-minimal-amd64-1"
+}
