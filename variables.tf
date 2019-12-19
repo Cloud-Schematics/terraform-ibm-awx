@@ -1,7 +1,7 @@
 
 variable "profile" {
   	description = "Virtual Server Instance Profile (default: Generation 2)"
-  	default = "cc1-2x4"
+  	default = "bx2-4x16"
 }
 
 variable "resource_group_name" {
