@@ -106,8 +106,8 @@ You can also choose to customize the default settings for your VPC infrastructur
 On a Standalone machine using Terraform Command Line Interface (CLI):
 The floating IP (or public host) information will be available in "Outputs:" section of the ```terraform apply``` output log.
 
-Using IBM Cloud Schematics:
-The AWX web link is available 
+Using IBM Cloud Schematics: 
+The AWX web link is available in two places
 - under workspace "Resources" in AWX section and 
 - at "View Log" (under "Outputs:") of "Plan applied" activity.
 
