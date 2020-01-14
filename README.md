@@ -16,6 +16,13 @@ Refer to `Deployment` section below for more details about the deployment inform
 * Resource Group
 * Floating IP
 
+## Costs
+
+When you apply template, the infrastructure resources that you create incur charges as follows. To clean up the resources, you can [delete your Schematics workspace or your instance](https://cloud.ibm.com/docs/schematics?topic=schematics-manage-lifecycle#destroy-resources). Removing the workspace or the instance cannot be undone. Make sure that you back up any data that you must keep before you start the deletion process.
+
+* **VPC**: VPC charges are incurred for the infrastructure resources within the VPC, as well as network traffic for internet data transfer. For more information, see [Pricing for VPC](https://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-pricing-for-vpc).
+* **VPC virtual servers**: The price for your virtual server instances depends on the flavor of the instances, how many you provision, and how long the instances are run. For more information, see [Pricing for Virtual Servers for VPC](https://cloud.ibm.com/docs/infrastructure/vpc-on-classic?topic=vpc-on-classic-pricing-for-vpc#pricing-for-virtual-servers-for-vpc).
+
 ## Prerequisites
 
 #### 1. On a Standalone machine using Terraform Command Line Interface (CLI)
@@ -72,7 +79,7 @@ The deployed resources can be seen using below command
 ```terraform show```
 
 #### 2. Using IBM Cloud Schematics
-To apply the terraform-ibm-awx template in IBM Cloud with IBM Cloud Schematics, you must select the template from the [IBM Cloud catalog](https://cloud.ibm.com/catalog#software), enter the configuration for your VPC classic virtual server instance, and install the template. When you install the template, IBM Cloud Schematics creates a workspace and starts provisioning your resources by using Terraform. You can review logs and your resources from the IBM Cloud Schematics console. For more information, see the [IBM Cloud Schematics documentation](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics).
+To apply the terraform-ibm-awx template in IBM Cloud with IBM Cloud Schematics, you must create workspace from the [IBM Cloud schematics](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics) and start managing resources lifecycle. You can review logs and your resources from the IBM Cloud Schematics console. For more information, see the [IBM Cloud Schematics documentation](https://cloud.ibm.com/docs/schematics?topic=schematics-about-schematics).
 
 
 ##  Configuring your deployment values
@@ -81,22 +88,28 @@ To apply on a standalone machine using Terraform CLI, you must enter the followi
     ```export IC_API_KEY=<API-KEY-VALUE>``` on command line interface terminal.
     For more information for how to create an API key and retrieve it, see [Managing classic infrastructure API keys](https://cloud.ibm.com/docs/iam?topic=iam-classic_keys). 
 
+### Required values
+Fill in the following values, based on the steps that you completed before you began.
+
+|Variable Name|Description|
+|-------------|-----------|
+|`resource_group_name`|Enter the name of the IBM Cloud resource group where you want to provision your database instance. To list available resource groups, run `ibmcloud resource groups`.|
+
+
 You can also choose to customize the default settings for your VPC infrastructure virtual server instance:
 
 
-  Name               | Description                         | Default Value - Generation 1 | Default Value - Generation 2
+  Name               | Description                         | Default Value - Generation 2 | Default Value - Generation 1
 | -------------------| ------------------------------------|------------------------------|------------------------------
-| region | Region to deploy VPC | eu-de | us-south
-| subnet zone        | Zone name where AWX will be deployed| eu-de-1 | us-south1
-| profile | VSI Profile | cc1-2x4 | bx2-4x16
-| image | VSI image | centos-7.x-amd64 | ibm-centos-7-6-minimal-amd64-1 
-| resource group name | To organize your account resources in customizable groupings | default | default
-| vpc_name | VPC Name | terraform-vpc-awx | terraform-vpc-awx
-| basename | Prefix used for all resource names | terraform-vpc-basename | terraform-vpc-basename
+| region | The region to create your VPC in, such as `us-south`. To get a list of all regions, run `ibmcloud is regions` for target generation. | us-south | eu-de
+| subnet zone | The zone to create this instance of awx. To get a list of all regions, run `ibmcloud is zones us-south` for target generation.| us-south-1 | eu-de-1
+| profile | The profile of compute CPU and memory resources that you want your VPC virtual servers to have. To list available profiles, run `ibmcloud is instance-profiles` for target generation. | bx2-4x16 | cc1-2x4
+| image | The name of the image that represents the operating system that you want to install on your VPC virtual server. To list available images, run `ibmcloud is images` for target generation. The default image is for an `ibm-centos-7-6-minimal-amd64-1` OS.|ibm-centos-7-6-minimal-amd64-1 | centos-7.x-amd64
+| vpc_basename | Represents a name of the VPC that awx will be deployed into. Resources associated with awx will be prepended with this name. | terraform-vpc-basename | terraform-vpc-basename
+| generation | Target the generation of compute resources. Default is '2'. You must set the value to '1' to access generation 1 resources. | 2 | 1
 
 
 ## Output
-
 
   Name               | Description                          
 | -------------------| ------------------------------------

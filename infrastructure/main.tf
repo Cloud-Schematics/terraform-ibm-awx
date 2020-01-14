@@ -16,13 +16,12 @@ resource "ibm_is_subnet" "awxsubnet" {
   total_ipv4_address_count = 256
 }
 
-
 data "ibm_resource_group" "group" {
   name = "${var.resource_group_name}"
 }
 
 resource "ibm_is_vpc" "awxvpc" {
-  name = "${var.vpc_name}"
+  name           = "${var.basename}"
   resource_group = "${data.ibm_resource_group.group.id}"
 }
 
@@ -37,11 +36,12 @@ data ibm_is_image "image1" {
 }
 
 resource ibm_is_instance "awxvsi" {
-  name           = "${var.basename}-awxvsi"
-  vpc            = "${ibm_is_vpc.awxvpc.id}"
-  zone           = "${var.subnet_zone}"
+  name = "${var.basename}-awxvsi"
+  vpc  = "${ibm_is_vpc.awxvpc.id}"
+  zone = "${var.subnet_zone}"
+
   #keys           = ["${ibm_is_ssh_key.sshkey.id}"]
-  keys           = ["${var.ssh_keyname}"]
+  keys           = ["${var.ssh_key_id}"]
   image          = "${data.ibm_is_image.image1.id}"
   profile        = "${var.profile}"
   resource_group = "${data.ibm_resource_group.group.id}"
@@ -61,7 +61,7 @@ resource ibm_is_floating_ip "awxfip" {
 resource "ibm_is_security_group_rule" "awx_ingress_ssh_all1" {
   group     = "${ibm_is_security_group.awxsg.id}"
   direction = "inbound"
-  remote    = "0.0.0.0/0"                     
+  remote    = "0.0.0.0/0"
 
   tcp = {
     port_min = 22
@@ -73,7 +73,7 @@ resource "ibm_is_security_group_rule" "awx_ingress_ssh_all1" {
 resource "ibm_is_security_group_rule" "awx_ingress_http" {
   group     = "${ibm_is_security_group.awxsg.id}"
   direction = "inbound"
-  remote    = "0.0.0.0/0" 
+  remote    = "0.0.0.0/0"
 
   tcp = {
     port_min = 80
@@ -81,13 +81,13 @@ resource "ibm_is_security_group_rule" "awx_ingress_http" {
   }
 }
 
-
 # Enable Ingress/Inbound on port 443 for https
 resource "ibm_is_security_group_rule" "awx_egress_https" {
   group     = "${ibm_is_security_group.awxsg.id}"
   direction = "outbound"
+
   #remote    = "${ibm_is_security_group.sg1.id}"
-  remote    = "0.0.0.0/0"
+  remote = "0.0.0.0/0"
 
   tcp = {
     port_min = 443
@@ -129,4 +129,3 @@ resource "ibm_is_security_group_rule" "awx_egress_dns_udp" {
     port_max = 53
   }
 }
-
