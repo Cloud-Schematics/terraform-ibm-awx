@@ -34,4 +34,4 @@ systemctl enable docker
 git clone https://github.com/ansible/awx.git /tmp/awx_repo
 
 # Install AWX
-ansible-playbook -i /tmp/awx_repo/installer/inventory /tmp/awx_repo/installer/install.yml
+ansible-playbook -i /tmp/awx_repo/installer/inventory /tmp/awx_repo/installer/install.yml --extra-vars "dockerhub_version=latest"
