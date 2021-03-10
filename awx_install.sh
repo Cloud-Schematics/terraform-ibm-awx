@@ -6,6 +6,7 @@ sudo yum -y update all
 sudo yum -y install -y wget git gettext ansible docker nodejs npm gcc-c++ bzip2 vim python-devel python2-devel pytest
 
 sudo yum -y install python3 python3-setuptools python3-pip
+alias python=/usr/bin/python3
 pip install --upgrade pip
 pip install --upgrade setuptools
 pip3 install docker docker-compose
